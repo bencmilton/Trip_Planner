@@ -1,0 +1,126 @@
+$navbar_color : #766355;
+$font_color: #9EC8DF;
+$header_color: #B4B4B4;
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+}
+
+nav {
+	background-color: $navbar_color; 
+}
+
+.btn {
+	border-radius: 50%;
+}
+
+
+
+#map-canvas {
+	margin: 0;
+	height: 95vh;
+}
+
+#planner-bar {
+	background: lighten($navbar_color, 40%);
+	padding-right: 30px;
+	//height: 500px;	
+}
+
+.panel-body {
+	background: lighten($navbar_color, 60%);
+}
+
+#planner {
+
+	.panel {
+		border: none;
+	}
+}
+
+.navbar {
+    margin-bottom: 0;
+    width: 100%	
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+    color: $font_color;
+
+}
+
+.navbar-inverse {
+	background-color: $navbar_color;
+	border-color: $navbar_color;
+	border-radius: 0;
+	.navbar-nav > .active > a {
+		background-color: darken($navbar_color, 10%);
+		color: $font_color;
+	} 
+}
+
+.panel-default {
+	.panel-heading {
+		background-color: $navbar_color;
+		border-color: $navbar_color;
+		.btn-default {
+			background-color: $navbar_color;
+			border-color: $font_color;
+			color: $font_color;
+		}
+	}
+	.panel-body {
+		label {
+			color: $header_color;
+		}
+	}	
+} 
+
+
+#day {
+	font: $navbar_color;
+	background-color: lighten($navbar_color, 40%);
+	border-width: 2px;
+	border-color: $navbar_color;
+	width: 50%;
+	.panel-body.center-block {
+		vertical-align: middle;
+		font-size: 18px;
+		background: lighten($navbar_color, 40%);
+		border-width: 2px;
+		border-color: $navbar_color;
+		border-style: solid;
+		border-radius: 5%;
+		span {
+			color: $navbar_color;
+		} 
+	}
+}
+
+#search {
+	padding: 20px;
+
+}
+
+#search-panel {
+	border-radius: 5%;
+}
+
+select.form-control {
+	min-width: 85%;
+	max-width: 85%
+}
+
+.add-btn {
+	background-color: #4C9DC4;
+	color: white;
+}
+
+.center {
+	color: black;
+	font-weight: 400;
+	font-size: 28px;
+}

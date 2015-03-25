@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  width: 100%; }
+
+nav {
+  background-color: #766355; }
+
+.btn {
+  border-radius: 50%; }
+
+#map-canvas {
+  margin: 0;
+  height: 95vh; }
+
+#planner-bar {
+  background: #d4cac3;
+  padding-right: 30px; }
+
+.panel-body {
+  background: #fffefe; }
+
+#planner .panel {
+  border: none; }
+
+.navbar {
+  margin-bottom: 0;
+  width: 100%; }
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+  color: #9EC8DF; }
+
+.navbar-inverse {
+  background-color: #766355;
+  border-color: #766355;
+  border-radius: 0; }
+  .navbar-inverse .navbar-nav > .active > a {
+    background-color: #584a40;
+    color: #9EC8DF; }
+
+.panel-default .panel-heading {
+  background-color: #766355;
+  border-color: #766355; }
+  .panel-default .panel-heading .btn-default {
+    background-color: #766355;
+    border-color: #9EC8DF;
+    color: #9EC8DF; }
+.panel-default .panel-body label {
+  color: #B4B4B4; }
+
+#day {
+  font: #766355;
+  background-color: #d4cac3;
+  border-width: 2px;
+  border-color: #766355;
+  width: 50%; }
+  #day .panel-body.center-block {
+    vertical-align: middle;
+    font-size: 18px;
+    background: #d4cac3;
+    border-width: 2px;
+    border-color: #766355;
+    border-style: solid;
+    border-radius: 5%; }
+    #day .panel-body.center-block span {
+      color: #766355; }
+
+#search {
+  padding: 20px; }
+
+#search-panel {
+  border-radius: 5%; }
+
+select.form-control {
+  min-width: 85%;
+  max-width: 85%; }
+
+.add-btn {
+  background-color: #4C9DC4;
+  color: white; }
+
+.center {
+  color: black;
+  font-weight: 400;
+  font-size: 28px; }
+
+/*# sourceMappingURL=trip_planner.css.map */

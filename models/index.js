@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/trip_planner');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongodb connection error:'));
 
-var Place, Hotel, ThingToDo, Restaurant;
+var Place, Hotel, ThingToDo, Restaurant, User;
 var Schema = mongoose.Schema;
 
 var placeSchema = new Schema ({
@@ -34,15 +34,22 @@ var restaurantSchema = new Schema ({
 	price: {type: Number, min:1, max:5}
 });
 
+var userSchema = new Schema ({
+	day: Number,
+	myHotels: [hotelSchema]
+});
+
 Place = mongoose.model('Place', placeSchema);
 Hotel = mongoose.model('Hotel', hotelSchema);
 ThingToDo = mongoose.model('ThingToDo', thingToDoSchema);
 Restaurant = mongoose.model('Restaurant', restaurantSchema);
+User = mongoose.model('User', userSchema);
 
 
 module.exports = {
 	Place: Place,
 	Hotel: Hotel,
 	ThingToDo: ThingToDo,
-	Restaurant: Restaurant
+	Restaurant: Restaurant,
+	User: User
 };

@@ -6,7 +6,7 @@ var async = require('async');
 var Hotel = models.Hotel;
 var Restaurant = models.Restaurant;
 var ThingToDo = models.ThingToDo;
-
+var User = models.User;
 
 router.get('/', function(req, res, next) {
 	async.parallel({
@@ -26,10 +26,27 @@ router.get('/', function(req, res, next) {
 			});
 		}}, function(err, data){
 			if (err) return next(err);
-			console.log(data);
 			res.render('index', data);
 		});
 
+});
+
+router.post('/:place/add', function(req, res){
+	var place = req.params.place;
+	if (place === 'hotel') {
+		console.log(req.body);
+		Hotel.findOne(req.body, function (err, hotel){
+			if (err) return next(err);
+			
+			User.day
+			User.hotels
+
+			save();
+			res.redirect("/");
+		});
+	}
+	
+	
 });
 
 module.exports = router;

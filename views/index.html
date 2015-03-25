@@ -1,26 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+{% extends "layout.html" %}
 
-	<select>
-		{% for hotel in all_hotels %}
-		<option> {{ hotel.name }} </option>
-		{% endfor %}
-	</select>
+{% block content %}
 
-	<select>
-		{% for restaurant in all_restaurants %}
-		<option> {{ restaurant.name }} </option>
-		{% endfor %}
-	</select>
+<!-- ----------------- Map ---------------------- -->
+		<div class="row">
+			<div id="map-canvas" class="col-md-8 col-sm-12 col-xs-12">
+					
+			</div> <!--map, col-md-8-->
 
-	<select>
-		{% for thingtodo in all_things_to_do %}
-		<option> {{ thingtodo.name }} </option>
-		{% endfor %}
-	</select>		
+<!-- ----------------- Search Bar ---------------------- -->
 
-</body>
-</html>
+			<div id="planner-bar" class="col-md-4 col-sm-12 col-xs-12">
+				<div class="row">
+					<div id="search" class="col-md-12 col-sm-6 col-xs-12">
+						<div id="search-panel" class="panel panel-default">
+ 							<div class="panel-body">
+								<div class="form-group">
+									<label>Hotels</label>
+										<form class="form-inline" action="/hotel/add" method="POST">
+											<select class="form-control" name="name">
+												{% for hotel in all_hotels %}
+												<option> {{ hotel.name }} </option>
+												{% endfor %}
+											</select>
+											<button class="btn add-btn btn-sm" type="submit">+</button>
+										</form>
+								</div><!--form group-->
+
+								<div class="form-group">
+									<label>Restaurants</label>
+										<form class="form-inline">							
+											<select class="form-control">
+												{% for restaurant in all_restaurants %}
+												<option> {{ restaurant.name }} </option>
+												{% endfor %}
+											</select>
+											<button class="btn add-btn btn-sm" type="submit"> + </button>
+										</form>									
+									</div><!--form group-->	
+
+								<div class="form-group">
+									<label>Things To Do</label>
+										<form class="form-inline">							
+											<select class="form-control">
+												{% for thingtodo in all_things_to_do %}
+												<option> {{ thingtodo.name }} </option>
+												{% endfor %}
+											</select>
+											<button class="btn add-btn btn-sm" type="submit"> + </button>
+										</form>								
+									</div><!--form group-->
+								</div> <!--panel body-->
+							</div> <!--panel panel-default-->
+						</div> <!--search, col-md-12-->
+
+<!-- ----------------- Day Display ---------------------- -->
+					<div id="planner" class="col-md-12 col-sm-6 col-xs-12">
+						<div id="day" class="panel panel-default center-block">
+						 	<div class="panel-body center-block">
+						 		<span class="center">Day 2</span>
+						 		<button class="btn btn-danger btn-sm" type="submit">x</button> 
+						 	</div> <!--panel-body, center-block-->
+						</div> <!--panel panel-default-->
+
+<!-- ----------------- Day Planner Bar ---------------------- -->
+
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+								
+								<button class="btn btn-default" type="submit">1</button>
+
+								<button class="btn btn-default" type="submit">+</button>
+
+						  </div> <!--panel-heading-->
+
+<!-- ----------------- Itinerary ---------------------- -->
+
+						  <div class="panel-body">
+
+						    <label>My Hotel</label>
+						    	<ul id="my_hotels" class="list-unstyled">
+						    		<li>A hotel 
+						    			<button class="btn btn-danger btn-sm" type="submit">x</button>
+						    		</li>
+						    	</ul>
+
+						    <label>My Restaurants</label>
+						    	<ul id="my_restaurants" class="list-unstyled">
+						    		<li>A restaurant
+											<button class="btn btn-danger btn-sm" type="submit">x</button>
+						    		</li>
+						    	</ul>	
+
+						    <label>My Things To Do</label>
+						    	<ul id="my_things_to_do" class="list-unstyled">
+						    		<li>A thing to do
+											<button class="btn btn-danger btn-sm" type="submit">x</button>
+						    		</li>
+						    	</ul>						    	
+
+						  </div> <!--panel-body-->
+						</div> <!--panel panel-default-->
+					</div> <!--planner, col-md-12-->
+				</div> <!--row-->
+			</div> <!--planner-bar, col-md-4-->
+		</div> <!--row-->
+	<div id="planner">
+		<div id="planner-bar">
+
+		</div> <!--planner bar-->	
+	</div> <!--planner-->
+
+<!-- ----------------- Javascript ---------------------- -->
+	<script>
+		function initialize_gmaps() {
+		    // initialize new google maps LatLng object
+		    var myLatlng = new google.maps.LatLng(40.705189,-74.009209);
+		    // set the map options hash
+		    var mapOptions = {
+		        center: myLatlng,
+		        zoom: 16,
+		        mapTypeId: google.maps.MapTypeId.ROADMAP
+		    };
+		    // get the maps div's HTML obj
+		    var map_canvas_obj = document.getElementById("map-canvas");
+		    console.log(map_canvas_obj);
+		    // initialize a new Google Map with the options
+		    var map = new google.maps.Map(map_canvas_obj, mapOptions);
+		    // Add the marker to the map
+		    var marker = new google.maps.Marker({
+		        position: myLatlng,
+		        title:"Hello World!"
+		    });
+		    // Add the marker to the map by calling setMap()
+		    marker.setMap(map);
+		}
+
+		$(document).ready(function() {
+		    initialize_gmaps();
+		});
+	</script>		
+
+{% endblock %}
